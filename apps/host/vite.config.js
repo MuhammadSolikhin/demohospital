@@ -5,9 +5,9 @@ import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
 import { getRemoteConfigs } from './remotes.config.js';
 
-export default ({ mode }) => {
+export default ({ mode = 'production' }) => {
   const env = loadEnv(mode, process.cwd());
-  const baseDomain = env.VITE_REMOTE_DOMAIN || 'http://localhost';
+  const baseDomain = env.VITE_REMOTE_DOMAIN || process.env.VITE_REMOTE_DOMAIN || 'http://localhost';
 
   const remotes = {};
   const remoteConfigs = getRemoteConfigs(baseDomain);
@@ -21,7 +21,7 @@ export default ({ mode }) => {
         name: 'host',
         filename: 'remoteEntry.js',
         remotes: {
-          'components': 'http://localhost:5171/assets/remoteEntry.js',
+          'components': `${baseDomain}:5171/assets/remoteEntry.js`,
           ...remotes,
         },
         exposes: {
