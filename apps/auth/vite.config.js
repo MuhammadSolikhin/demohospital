@@ -4,6 +4,8 @@ import federation from '@originjs/vite-plugin-federation'
 import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer';
 
+const baseDomain = process.env.VITE_REMOTE_DOMAIN || 'http://localhost';
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -11,7 +13,7 @@ export default defineConfig({
     federation({
       name: 'auth',
       remotes: {
-        'components':'http://localhost:5171/assets/remoteEntry.js',
+        'components':`${baseDomain}:5171/assets/remoteEntry.js`,
       },
       exposes: {
         './App': './src/App.jsx',

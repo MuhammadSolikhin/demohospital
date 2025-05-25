@@ -12,34 +12,42 @@ services:
   components:
     build:
       context: ./apps/components
+      args:
+          VITE_REMOTE_DOMAIN: http://demohospital.site
     container_name: mfe_components
     ports:
       - "5171:80"
     image: khinnn/components:latest
   
-  dashboard:
-    build:
-      context: ./apps/dashboard
-    container_name: mfe_dashboard
-    ports:
-      - "5172:80"
-    depends_on:
-      - components
-    image: khinnn/dashboard:latest
+  # dashboard:
+  #   build:
+  #     context: ./apps/dashboard
+  #     args:
+  #         VITE_REMOTE_DOMAIN: http://demohospital.site
+  #   container_name: mfe_dashboard
+  #   ports:
+  #     - "5172:80"
+  #   depends_on:
+  #     - components
+  #   image: khinnn/dashboard:latest
 
-  appointments:
-    build:
-      context: ./apps/appointments
-    container_name: mfe_appointments
-    ports:
-      - "5173:80"
-    depends_on:
-      - components
-    image: khinnn/appointments:latest
+  # appointments:
+  #   build:
+  #     context: ./apps/appointments
+  #     args:
+  #         VITE_REMOTE_DOMAIN: http://demohospital.site
+  #   container_name: mfe_appointments
+  #   ports:
+  #     - "5173:80"
+  #   depends_on:
+  #     - components
+  #   image: khinnn/appointments:latest
   
   auth:
     build:
       context: ./apps/auth
+      args:
+          VITE_REMOTE_DOMAIN: http://demohospital.site
     container_name: mfe_auth
     ports:
       - "5174:80"
@@ -47,44 +55,52 @@ services:
       - components
     image: khinnn/auth:latest
   
-  patients:
-    build:
-      context: ./apps/patients   
-    container_name: mfe_patients
-    ports:
-      - "5175:80"
-    depends_on:
-      - components
-    image: khinnn/patients:latest
+  # patients:
+  #   build:
+  #     context: ./apps/patients   
+  #     args:
+  #         VITE_REMOTE_DOMAIN: http://demohospital.site
+  #   container_name: mfe_patients
+  #   ports:
+  #     - "5175:80"
+  #   depends_on:
+  #     - components
+  #   image: khinnn/patients:latest
   
-  inventory:
-    build:
-      context: ./apps/inventory
-    container_name: mfe_inventory
-    ports:
-      - "5176:80"
-    depends_on:
-      - components
-    image: khinnn/inventory:latest
+  # inventory:
+  #   build:
+  #     context: ./apps/inventory
+  #     args:
+  #         VITE_REMOTE_DOMAIN: http://demohospital.site
+  #   container_name: mfe_inventory
+  #   ports:
+  #     - "5176:80"
+  #   depends_on:
+  #     - components
+  #   image: khinnn/inventory:latest
   
-  assets:
-    build:
-      context: ./apps/assets
-    container_name: mfe_assets
-    ports:
-      - "5177:80"
-    depends_on:
-      - components
-    image: khinnn/assets:latest
+  # assets:
+  #   build:
+  #     context: ./apps/assets
+  #     args:
+  #         VITE_REMOTE_DOMAIN: http://demohospital.site
+  #   container_name: mfe_assets
+  #   ports:
+  #     - "5177:80"
+  #   depends_on:
+  #     - components
+  #   image: khinnn/assets:latest
   
-  pharmacy:
-    build:
-      context: ./apps/pharmacy
-    container_name: mfe_pharmacy
-    ports:
-      - "5178:80"
-    depends_on:
-      - components
-    image: khinnn/pharmacy:latest
+  # pharmacy:
+  #   build:
+  #     context: ./apps/pharmacy
+  #     args:
+  #         VITE_REMOTE_DOMAIN: http://demohospital.site
+  #   container_name: mfe_pharmacy
+  #   ports:
+  #     - "5178:80"
+  #   depends_on:
+  #     - components
+  #   image: khinnn/pharmacy:latest
   
   

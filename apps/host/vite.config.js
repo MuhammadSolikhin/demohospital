@@ -5,8 +5,6 @@ import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
 import { getRemoteConfigs } from './remotes.config.js';
 
-console.log('VITE_REMOTE_DOMAIN:', process.env.VITE_REMOTE_DOMAIN);
-
 const baseDomain = process.env.VITE_REMOTE_DOMAIN || 'http://localhost';
 
 const remotes = {};
