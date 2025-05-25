@@ -4,6 +4,8 @@ import federation from '@originjs/vite-plugin-federation';
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 
+const baseDomain = process.env.VITE_REMOTE_DOMAIN || 'http://localhost';
+
 export default defineConfig({
   plugins: [
     react(),
@@ -11,7 +13,7 @@ export default defineConfig({
       name: 'components',
       filename: 'remoteEntry.js', 
       remotes: {
-        host: 'http://localhost:5170/assets/remoteEntry.js',
+        'components':`${baseDomain}:5170/assets/remoteEntry.js`,
       },
       exposes: {
         './Brand': './src/components/atoms/Brand.jsx',
