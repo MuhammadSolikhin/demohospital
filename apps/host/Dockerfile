@@ -12,7 +12,7 @@ COPY . .
 ARG VITE_REMOTE_DOMAIN
 ENV VITE_REMOTE_DOMAIN=$VITE_REMOTE_DOMAIN
 
-RUN VITE_REMOTE_DOMAIN=$VITE_REMOTE_DOMAIN npm run build
+RUN VITE_REMOTE_DOMAIN=$VITE_REMOTE_DOMAIN npm run build -- --mode=production
 
 # Stage 2: Serve using nginx
 FROM nginx:alpine
