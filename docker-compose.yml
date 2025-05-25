@@ -1,4 +1,21 @@
 services:
+  gateway:
+    image: nginx:latest
+    container_name: mfe_gateway
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/gateway.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - host
+      - components
+      - dashboard
+      - appointments
+      - auth
+      - patients
+      - inventory
+      - assets
+      - pharmacy
   host:
       build:
         context: ./apps/host
