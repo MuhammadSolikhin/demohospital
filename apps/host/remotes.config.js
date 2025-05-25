@@ -1,4 +1,4 @@
-export function getRemoteConfigs(baseDomain = 'http://localhost') {
+export function getRemoteConfigs(baseDomain = 'http://demohospital.site') {
   return [
     {
       module: './App',
@@ -46,6 +46,6 @@ export function getRemoteConfigs(baseDomain = 'http://localhost') {
 
 }
 
-const baseDomain = process.env.VITE_REMOTE_DOMAIN || 'http://localhost';
+const baseDomain = process.env.VITE_REMOTE_DOMAIN || 'http://demohospital.site';
 const remotes = getRemoteConfigs(baseDomain);
 export default remotes;

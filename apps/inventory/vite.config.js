@@ -11,7 +11,7 @@ export default defineConfig({
     federation({
       name: 'dashboard',
       remotes: {
-        'components': 'http://localhost:5171/assets/remoteEntry.js',
+        'components': 'http://demohospital.site:5171/assets/remoteEntry.js',
       },
       exposes: {
         './App': './src/App.jsx',

@@ -4,12 +4,12 @@ import federation from '@originjs/vite-plugin-federation'
 import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer';
 
-const baseDomain = process.env.VITE_REMOTE_DOMAIN || 'http://localhost';
+const baseDomain = process.env.VITE_REMOTE_DOMAIN || 'http://demohospital.site';
 
 // https://vite.dev/config/
 export default defineConfig({
   define: {
-    'import.meta.env.VITE_REMOTE_DOMAIN': JSON.stringify(process.env.VITE_REMOTE_DOMAIN || 'http://localhost')
+    'import.meta.env.VITE_REMOTE_DOMAIN': JSON.stringify(process.env.VITE_REMOTE_DOMAIN || 'http://demohospital.site')
   },
   plugins: [
     react(),

@@ -4,19 +4,14 @@ import federation from '@originjs/vite-plugin-federation';
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 
-const baseDomain = process.env.VITE_REMOTE_DOMAIN || 'http://localhost';
-
 export default defineConfig({
-  define: {
-    'import.meta.env.VITE_REMOTE_DOMAIN': JSON.stringify(process.env.VITE_REMOTE_DOMAIN || 'http://localhost')
-  },
   plugins: [
     react(),
     federation({
       name: 'components',
       filename: 'remoteEntry.js', 
       remotes: {
-        'components':`${baseDomain}:5170/assets/remoteEntry.js`,
+        host: 'http://demohospital.site:5170/assets/remoteEntry.js',
       },
       exposes: {
         './Brand': './src/components/atoms/Brand.jsx',

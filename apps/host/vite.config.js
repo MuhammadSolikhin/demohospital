@@ -5,7 +5,7 @@ import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
 import { getRemoteConfigs } from './remotes.config.js';
 
-const baseDomain = process.env.VITE_REMOTE_DOMAIN || 'http://localhost';
+const baseDomain = process.env.VITE_REMOTE_DOMAIN || 'http://demohospital.site';
 
 const remotes = {};
 const remoteConfigs = getRemoteConfigs(baseDomain);
@@ -15,7 +15,7 @@ remoteConfigs.forEach((remoteConfig) => {
 
 export default defineConfig({
   define: {
-    'import.meta.env.VITE_REMOTE_DOMAIN': JSON.stringify(process.env.VITE_REMOTE_DOMAIN || 'http://localhost')
+    'import.meta.env.VITE_REMOTE_DOMAIN': JSON.stringify(process.env.VITE_REMOTE_DOMAIN || 'http://demohospital.site')
   },
   plugins: [
     react(),
