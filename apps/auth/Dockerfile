@@ -3,21 +3,17 @@ FROM node:20 AS builder
 
 WORKDIR /app
 
+ARG VITE_REMOTE_DOMAIN
+ENV VITE_REMOTE_DOMAIN=$VITE_REMOTE_DOMAIN
+
 # Copy package files and install dependencies
 COPY package*.json ./
 RUN npm install
 
 # Copy the entire project
 COPY . .
-# Accept build arguments
-ARG VITE_APP_PRODUCTION
-ARG VITE_COMPONENTS_URL
 
-ENV VITE_APP_PRODUCTION=$VITE_APP_PRODUCTION
-ENV VITE_COMPONENTS_URL=$VITE_COMPONENTS_URL
-
-# Build the app
-RUN npm run build
+RUN VITE_REMOTE_DOMAIN=$VITE_REMOTE_DOMAIN npm run build -- --mode=production
 
 # Stage 2: Serve using nginx
 FROM nginx:alpine
