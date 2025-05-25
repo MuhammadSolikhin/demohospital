@@ -1,0 +1,109 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Log in to DockerHub
+      run: |
+        echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ vars.DOCKERHUB_USERNAME }}" --password-stdin
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Set environment variables
+      run: |
+        echo "VITE_COMPONENTS_URL=http://${{ vars.EC2_HOST }}:5171/assets/remoteEntry.js" >> .env
+        echo "VITE_HOST=http://${{ vars.EC2_HOST }}:5170/assets/remoteEntry.js" >> .env
+        echo "VITE_EC2_HOST=${{ vars.EC2_HOST }}" >> .env
+
+    - name: Build all micro frontends using Docker Compose
+      run: |
+        docker compose build --no-cache \
+          --build-arg VITE_COMPONENTS_URL=http://${{ vars.EC2_HOST }}:5171/assets/remoteEntry.js \
+          --build-arg VITE_HOST=http://${{ vars.EC2_HOST }}:5170/assets/remoteEntry.js \
+          --build-arg VITE_EC2_HOST=${{ vars.EC2_HOST }}
+
+    - name: Push images
+      run: docker compose push
+  
+    - name: Setup SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ vars.EC2_HOST }} >> ~/.ssh/known_hosts
+    
+    - name: Install Docker and Docker Compose on EC2 if missing
+      run: |
+          ssh ${{ vars.EC2_USER }}@${{ vars.EC2_HOST }} << "EOF"
+            # Install Docker if not present
+            if ! command -v docker &> /dev/null; then
+              echo "Docker not found. Installing..."
+              sudo apt-get update
+              sudo apt-get install -y ca-certificates curl gnupg lsb-release
+      
+              # Add Docker’s official GPG key
+              sudo install -m 0755 -d /etc/apt/keyrings
+              curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+      
+              # Set up the repository
+              echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+              https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | \
+              sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+      
+              sudo apt-get update
+              sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+      
+              echo "Docker installed."
+            else
+              echo "Docker already installed."
+            fi
+      
+            # Start Docker if needed
+            if ! sudo systemctl is-active --quiet docker; then
+              sudo systemctl start docker
+              sudo systemctl enable docker
+            fi
+      
+            # Print versions
+            docker --version
+            docker compose version
+          EOF
+      
+    - name: Prepare and Copy Docker Compose File
+      run: |
+            ssh -o StrictHostKeyChecking=no ${{ vars.EC2_USER }}@${{ vars.EC2_HOST }} "mkdir -p '${{ vars.EC2_PROJECT_PATH }}'"
+            scp -o StrictHostKeyChecking=no docker-compose.yml ${{ vars.EC2_USER }}@${{ vars.EC2_HOST }}:${{ vars.EC2_PROJECT_PATH }}
+            
+    - name: SSH and Deploy on EC2
+      run: |
+          ssh ${{ vars.EC2_USER }}@${{ vars.EC2_HOST }} << 'EOF'
+            sudo docker info > /dev/null || { echo "Docker is not running"; exit 1; }
+      
+            if [ -e "${{ vars.EC2_PROJECT_PATH }}" ] && [ ! -d "${{ vars.EC2_PROJECT_PATH }}" ]; then
+              echo "Path exists but is not a directory. Removing..."
+              rm -f "${{ vars.EC2_PROJECT_PATH }}"
+            fi
+      
+            if [ ! -d "${{ vars.EC2_PROJECT_PATH }}" ]; then
+              echo "Directory does not exist. Creating..."
+              mkdir -p "${{ vars.EC2_PROJECT_PATH }}"
+            fi
+      
+            cd "${{ vars.EC2_PROJECT_PATH }}"
+            sudo docker compose pull
+            sudo docker compose down
+            sudo docker compose up -d
+          EOF
+      
+        

@@ -1,0 +1,88 @@
+services:
+  host:
+      build:
+        context: ./apps/host
+      container_name: mfe_host
+      ports:
+        - "5170:80"
+      image: khinnn/host:latest
+
+  components:
+    build:
+      context: ./apps/components
+    container_name: mfe_components
+    ports:
+      - "5171:80"
+    image: khinnn/components:latest
+  
+  dashboard:
+    build:
+      context: ./apps/dashboard
+    container_name: mfe_dashboard
+    ports:
+      - "5172:80"
+    depends_on:
+      - components
+    image: khinnn/dashboard:latest
+
+  appointments:
+    build:
+      context: ./apps/appointments
+    container_name: mfe_appointments
+    ports:
+      - "5173:80"
+    depends_on:
+      - components
+    image: khinnn/appointments:latest
+  
+  auth:
+    build:
+      context: ./apps/auth
+    container_name: mfe_auth
+    ports:
+      - "5174:80"
+    depends_on:
+      - components
+    image: khinnn/auth:latest
+  
+  patients:
+    build:
+      context: ./apps/patients   
+    container_name: mfe_patients
+    ports:
+      - "5175:80"
+    depends_on:
+      - components
+    image: khinnn/patients:latest
+  
+  inventory:
+    build:
+      context: ./apps/inventory
+    container_name: mfe_inventory
+    ports:
+      - "5176:80"
+    depends_on:
+      - components
+    image: khinnn/inventory:latest
+  
+  assets:
+    build:
+      context: ./apps/assets
+    container_name: mfe_assets
+    ports:
+      - "5177:80"
+    depends_on:
+      - components
+    image: khinnn/assets:latest
+  
+  pharmacy:
+    build:
+      context: ./apps/pharmacy
+    container_name: mfe_pharmacy
+    ports:
+      - "5178:80"
+    depends_on:
+      - components
+    image: khinnn/pharmacy:latest
+  
+  

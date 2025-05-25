@@ -1,0 +1,68 @@
+{
+    "login": {
+        "title": "Welcome Back!",
+        "description": "What a beautiful day to get to work",
+        "input": {
+            "email": {
+                "label": "Email",
+                "placeholder": "Enter your email"
+            },
+            "password": {
+                "label": "Password",
+                "placeholder": "Enter your password"
+            }
+        },
+        "button": {
+            "signin": "Sign In"
+        },
+        "link": {
+            "forgotPassword": "Forgot Password?"
+        }
+    },
+    "forgotPassword": {
+        "title": "Forgot Password",
+        "description": "Reset your password, we will send code to your email",
+        "input": {
+            "email": {
+                "label": "Email",
+                "placeholder":"Enter your email"
+            }
+        },
+        "button": {
+            "send": "Send"
+        },
+        "link": {
+            "login": "Already have an account? Sign In"
+        }
+    },
+    "resetPassword": {
+        "title": "Reset Password",
+        "description": "Create a new password for your account",
+        "input": {
+            "password": {
+                "label": "Password",
+                "placeholder":"Enter your new password"
+            },
+            "confirmationPassword": {
+                "label": "Confirmation Password",
+                "placeholder":"Enter your new password"
+            }
+        },
+        "button": {
+            "reset": "Save"
+        },
+        "link": {
+            "login": "Already have an account? Sign In"
+        }
+    },
+    "otp": {
+        "title": "Verification",
+        "description": "You can check your email and submit the code",
+        "button": {
+            "confirm": "Confirm"
+        },
+        "link": {
+            "resend": "Didn’t get the code? <span class='font-bold text-primary'>Send New</span>"
+        }
+    }
+}

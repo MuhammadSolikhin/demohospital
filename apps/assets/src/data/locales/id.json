@@ -1,0 +1,18 @@
+{
+    "dashboard": {
+        "welcome": {
+            "hi": "Selamat datang, {{ name }}",
+            "description": "Ke Sistem Manajemen Kesehatan"
+        },
+        "menus": {
+            "dashboard": "Beranda",
+            "appointment": "Janji Temu",
+            "staff": "Karyawan",
+            "patient": "Pasien",
+            "billing": "Penagihan",
+            "pharmacy": "Apotek",
+            "inventory": "Inventaris",
+            "asset": "Manajemen Aset"
+        }
+    }
+}

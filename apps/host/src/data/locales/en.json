@@ -1,0 +1,18 @@
+{
+    "dashboard": {
+        "welcome": {
+            "hi": "Welcome, {{ name }}",
+            "description": "To Health Management System"
+        },
+        "menus": {
+            "dashboard": "Dashboard",
+            "appointment": "Appointments",
+            "staff": "Staff",
+            "patient": "Patients",
+            "billing": "Billing",
+            "pharmacy": "Pharmacy",
+            "inventory": "Inventory",
+            "asset": "Management Assets"
+        }
+    }
+}

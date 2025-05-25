@@ -1,0 +1,86 @@
+{
+    "overview": {
+        "title": "Ringkasan Janji Temu",
+        "button": {
+            "add": {
+                "title": "Tambah Janji Temu",
+                "form": "Gunakan Formulir",
+                "link": "Gunakan Tautan"
+            },
+            "activity": {
+                "today": "Hari Ini",
+                "week": "Minggu Ini",
+                "month": "Bulan Ini",
+                "year": "Tahun Ini"
+            },
+            "status": {
+                "approve": "Setujui",
+                "reschedule": "Jadwalkan Ulang",
+                "cancel": "Batal"
+            }
+        },
+        "activity": "Aktivitas",
+        "doctors": "Dokter",
+        "appointment": "Janji Temu",
+        "status": {
+            "approved": "Disetujui",
+            "reschedule": "Jadwalkan Ulang",
+            "cancel": "Batal"
+        },
+        "calendar": {
+            "days": {
+                "0": "M",
+                "1": "S",
+                "2": "S",
+                "3": "R",
+                "4": "K",
+                "5": "J",
+                "6": "S"
+            },
+            "month": {
+                "january": "Januari",
+                "february": "Februari",
+                "march": "Maret",
+                "april": "April",
+                "may": "Mei",
+                "june": "Juni",
+                "july": "Juli",
+                "august": "Agustus",
+                "september": "September",
+                "october": "Oktober",
+                "november": "November",
+                "december": "Desember"
+            }
+        },
+        "breadcrumb": {
+            "create": "Tambah Janji Temu Baru"
+        },
+        "form": {
+            "appointment": {
+                "input": {
+                    "patient_information_title": "Informasi Pasien",
+                    "appointment_detail_title": "Informasi Janji Temu",
+                    "patient_name": "Nama Pasien",
+                    "gender": "Jenis Kelamin",
+                    "dob": "Tanggal Lahir",
+                    "email": "Email Pasien",
+                    "phone": "Nomor Handphone",
+                    "purpose": "Tujuan",
+                    "doctor": "Dokter",
+                    "date": "Tanggal",
+                    "time": "Waktu",
+                    "options": {
+                        "gender": {
+                            "male": "Laki-Laki",
+                            "female": "Perempuan"
+                        }
+                    }
+                },
+                "button": {
+                    "save": "Simpan",
+                    "cancel": "Batal"
+                }
+            }
+        }
+    }
+}

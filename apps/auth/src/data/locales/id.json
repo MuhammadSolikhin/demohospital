@@ -1,0 +1,68 @@
+{
+    "login": {
+        "title": "Selamat Datang!",
+        "description": "Sungguh hari yang indah untuk mulai bekerja",
+        "input": {
+            "email": {
+                "label": "Email",
+                "placeholder": "Masukan email anda"
+            },
+            "password": {
+                "label": "Password",
+                "placeholder": "Masukan password anda"
+            }
+        },
+        "button": {
+            "signin": "Masuk"
+        },
+        "link": {
+            "forgotPassword": "Lupa Password?"
+        }
+    },
+    "forgotPassword": {
+        "title": "Lupa Password",
+        "description": "Ulang password kamu, kami akan mengirim code melalui email",
+        "input": {
+            "email": {
+                "label": "Email",
+                "placeholder":"Masukan email anda"
+            }
+        },
+        "button": {
+            "send": "Kirim"
+        },
+        "link": {
+            "login": "Sudah memiliku akun? Masuk"
+        }
+    },
+    "resetPassword": {
+        "title": "Perbarui Password",
+        "description": "Buat password baru untuk akun kamu",
+        "input": {
+            "password": {
+                "label": "Password",
+                "placeholder":"Masukan password baru anda"
+            },
+            "confirmationPassword": {
+                "label": "Ulangi Password",
+                "placeholder":"Masukan kembali password baru anda"
+            }
+        },
+        "button": {
+            "reset": "Simpan"
+        },
+        "link": {
+            "login": "Sudah memiliku akun? Masuk"
+        }
+    },
+    "otp": {
+        "title": "Verifikasi",
+        "description": "Silakan periksa email anda dan masukan kode",
+        "button": {
+            "confirm": "Konfirmasi"
+        },
+        "link": {
+            "resend": "Tidak menerima kode? <span className='font-bold'>Kirim Ulang</span>"
+        }
+    }
+}

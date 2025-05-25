@@ -1,0 +1,11 @@
+body {
+    margin: 0 auto;
+    padding: 0;
+    background: #E6ECFF;
+    /* overflow: hidden; */
+    font-family: "Poppins", sans-serif;
+}
+
+.css-aqpult {
+    font-family: "Poppins", sans-serif !important;
+}

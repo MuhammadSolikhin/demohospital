@@ -1,0 +1,120 @@
+{
+    "patients": {
+        "form": {
+            "input": {
+                "options": {
+                    "gender": {
+                        "male": "Male",
+                        "female": "Female"
+                    },
+                    "title": {
+                        "mr": "Mr",
+                        "mrs": "Mrs"
+                    },
+                    "martial_status": {
+                        "single": "Single",
+                        "married": "Married",
+                        "divorced": "Divorced",
+                        "widowed": "Widowed"
+                    },
+                    "religion": {
+                        "christian": "Christian",
+                        "muslim": "Muslim",
+                        "hindu": "Hindu",
+                        "buddhist": "Buddhist",
+                        "jewish": "christian",
+                        "other": "Other"
+                    },
+                    "employment_status": {
+                        "full_time": "Full Time",
+                        "part_time": "Part Time",
+                        "self_employed": "Self Employed",
+                        "unemployed": "Unemployed",
+                        "student": "Student",
+                        "retired": "Retired",
+                        "other": "Other"
+                    }
+                },
+                "name": "Patient Name",
+                "registration_number": "Registration Number",
+                "registration_date": "Registration Date",
+                "identity_number": "Identity Number",
+                "title": "Title",
+                "first_name": "First Name",
+                "middle_name": "Middle Name",
+                "last_name": "Last Name",
+                "gender": "Gender",
+                "dob": "Date of Birth",
+                "age": "Age",
+                "year": "Year",
+                "religion": "Religion",
+                "martial_status": "Martial Status",
+                "occupation": "Occupation",
+                "employment_status": "Employment Status",
+                "address": "Address",
+                "province": "State / Province",
+                "city": "City",
+                "nationality": "Nationality",
+                "postal_code": "Postal Code",
+                "phone": "Phone",
+                "telephone": "Telephone",
+                "email": "Email",
+                "insurance_type": "Insurance Type",
+                "insurance_name": "Insurance Name",
+                "insurance_number": "Insurance Number"
+            },
+            "button": {
+                "save": "Save",
+                "cancel": "Cancel"
+            },
+            "label": {
+                "registration_information": "Registration Information",
+                "patient_information": "Patient Information",
+                "personal_detail": "Personal Details",
+                "address": "Address",
+                "contact": "Contact",
+                "emergency_contact": "Emergency Contact Information",
+                "insurance": "Insurance"
+            }
+        },
+        "label": {
+            "reset_form": "Reset Form",
+            "add_patient": "Add Patient",
+            "page": "Page",
+            "of": "Of"
+        }
+    },
+    "visits": {
+        "form": {
+            "input": {
+                "date_of_visit": "Date of Visit",
+                "visit_type": "Visit Type",
+                "doctor": "Doctor",
+                "speciality": "Specialty",
+                "complaint": "Complaint"
+            },
+            "button": {
+                "save": "Save",
+                "cancel": "Cancel"
+            }
+        }
+    },
+    "birth": {
+        "label": {
+            "activity": "Activity",
+            "gender": {
+                "all": "All Gender",
+                "female": "Female",
+                "male": "Male"
+            }
+        },
+        "button": {
+            "activity": {
+                "today": "Today",
+                "week": "This Week",
+                "month": "This Month",
+                "year": "This Year"
+            }
+        }
+    }
+}
