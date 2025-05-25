@@ -2,6 +2,8 @@ services:
   host:
       build:
         context: ./apps/host
+        args:
+          VITE_REMOTE_DOMAIN: http://demohospital.site
       container_name: mfe_host
       ports:
         - "5170:80"

@@ -3,22 +3,17 @@ FROM node:20 AS builder
 
 WORKDIR /app
 
+# Accept build-time argument
+ARG VITE_REMOTE_DOMAIN
+# Make it available to the build process (like Vite)
+ENV VITE_REMOTE_DOMAIN=$VITE_REMOTE_DOMAIN
+
 # Copy package files and install dependencies
 COPY package*.json ./
 RUN npm install
 
 # Copy the entire project
 COPY . .
-# Accept build arguments
-# ARG VITE_APP_PRODUCTION
-# ARG VITE_COMPONENTS_URL
-# ARG VITE_EC2_HOST
-
-# ENV VITE_APP_PRODUCTION=$VITE_APP_PRODUCTION
-# ENV VITE_COMPONENTS_URL=$VITE_COMPONENTS_URL
-# ENV VITE_EC2_HOST=$VITE_EC2_HOST
-
-# RUN echo "VITE_EC2_HOST=$VITE_EC2_HOST" && echo "VITE_COMPONENTS_URL=$VITE_COMPONENTS_URL"
 
 # Build the app
 RUN npm run build
