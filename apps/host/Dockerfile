@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 # Build with mode
-RUN npm run build -- --mode=production
+RUN VITE_REMOTE_DOMAIN=$VITE_REMOTE_DOMAIN npm run build -- --mode=production
 
 # Stage 2: Serve using nginx
 FROM nginx:alpine

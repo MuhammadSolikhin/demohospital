@@ -46,6 +46,6 @@ export function getRemoteConfigs(baseDomain = 'http://localhost') {
 
 }
 
-const baseDomain = import.meta.env.VITE_REMOTE_DOMAIN || 'http://localhost';
+const baseDomain = process.env.VITE_REMOTE_DOMAIN || 'http://localhost';
 const remotes = getRemoteConfigs(baseDomain);
 export default remotes;
