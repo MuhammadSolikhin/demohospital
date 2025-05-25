@@ -8,6 +8,9 @@ const baseDomain = process.env.VITE_REMOTE_DOMAIN || 'http://localhost';
 
 // https://vite.dev/config/
 export default defineConfig({
+  define: {
+    'import.meta.env.VITE_REMOTE_DOMAIN': JSON.stringify(process.env.VITE_REMOTE_DOMAIN || 'http://localhost')
+  },
   plugins: [
     react(),
     federation({

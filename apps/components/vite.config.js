@@ -7,6 +7,9 @@ import autoprefixer from 'autoprefixer';
 const baseDomain = process.env.VITE_REMOTE_DOMAIN || 'http://localhost';
 
 export default defineConfig({
+  define: {
+    'import.meta.env.VITE_REMOTE_DOMAIN': JSON.stringify(process.env.VITE_REMOTE_DOMAIN || 'http://localhost')
+  },
   plugins: [
     react(),
     federation({

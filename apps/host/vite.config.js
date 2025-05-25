@@ -14,6 +14,9 @@ remoteConfigs.forEach((remoteConfig) => {
 });
 
 export default defineConfig({
+  define: {
+    'import.meta.env.VITE_REMOTE_DOMAIN': JSON.stringify(process.env.VITE_REMOTE_DOMAIN || 'http://localhost')
+  },
   plugins: [
     react(),
     federation({
