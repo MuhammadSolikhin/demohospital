@@ -99,6 +99,12 @@ jobs:
               echo "Directory does not exist. Creating..."
               mkdir -p "${{ vars.EC2_PROJECT_PATH }}"
             fi
+
+            echo "Cleaning up Docker..."
+            sudo docker system prune -af --volumes
+
+            echo "Free disk space before build:"
+            df -h
       
             cd "${{ vars.EC2_PROJECT_PATH }}"
             sudo docker compose pull
